@@ -1,21 +1,20 @@
-package us.myles.ViaVersion.protocols.protocol1_9to1_8.types;
-
+package us.myles.ViaVersion.protocols.protocol1_10to1_9_3.types;
 
 import io.netty.buffer.ByteBuf;
 import us.myles.ViaVersion.api.minecraft.metadata.Metadata;
 import us.myles.ViaVersion.api.type.types.minecraft.MetaTypeTemplate;
-import us.myles.ViaVersion.protocols.protocol1_9to1_8.metadata.MetadataTypes;
+import us.myles.ViaVersion.protocols.protocol1_9to1_8.metadata.NewType;
 
-public class MetadataType extends MetaTypeTemplate {
+public class MetaSnapshotType extends MetaTypeTemplate {
 
     @Override
     public Metadata read(ByteBuf buffer) throws Exception {
-        byte item = buffer.readByte();
-        if (item == 127) return null; // end of metadata
-        int typeID = (item & 0xE0) >> 5;
-        MetadataTypes type = MetadataTypes.byId(typeID);
-        int id = item & 0x1F;
-        return new Metadata(id, typeID, type.getType(), type.getType().read(buffer));
+        short index = buffer.readUnsignedByte();
+
+        if (index == 0xff) return null; //End of metadata
+        NewType type = NewType.byId(buffer.readByte());
+
+        return new Metadata(index, type.getTypeID(), type.getType(), type.getType().read(buffer));
     }
 
     @Override

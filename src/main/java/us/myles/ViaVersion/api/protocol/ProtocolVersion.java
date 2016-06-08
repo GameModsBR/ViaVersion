@@ -16,6 +16,7 @@ public class ProtocolVersion {
     public static final ProtocolVersion v1_9_1;
     public static final ProtocolVersion v1_9_2;
     public static final ProtocolVersion v1_9_3;
+    public static final ProtocolVersion SNAPSHOT;
 
     private final int id;
     private final String name;
@@ -28,6 +29,7 @@ public class ProtocolVersion {
         register(v1_9_1 = new ProtocolVersion(108, "1.9.1"));
         register(v1_9_2 = new ProtocolVersion(109, "1.9.2"));
         register(v1_9_3 = new ProtocolVersion(110, "1.9.3/4"));
+        register(SNAPSHOT = new ProtocolVersion(210, "1.10"));
     }
 
     public static void register(@NonNull ProtocolVersion protocol) {
@@ -47,6 +49,6 @@ public class ProtocolVersion {
     }
 
     public static List<ProtocolVersion> getProtocols() {
-        return Collections.unmodifiableList(new ArrayList<ProtocolVersion>(versions.values()));
+        return Collections.unmodifiableList(new ArrayList<>(versions.values()));
     }
 }
