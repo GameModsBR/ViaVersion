@@ -35,7 +35,7 @@ public enum SoundEffect {
     MOB_HORSE_ZOMBIE_DEATH("mob.horse.zombie.death", "entity.zombie_horse.death", SoundCategory.NEUTRAL),
     MOB_SILVERFISH_KILL("mob.silverfish.kill", "entity.endermite.death", SoundCategory.HOSTILE),
     MOB_WOLF_PANTING("mob.wolf.panting", "entity.wolf.pant", SoundCategory.NEUTRAL),
-    NOTE_BASS("note.bass", "null", SoundCategory.RECORD),
+    NOTE_BASS("note.bass", "block.note.bass", SoundCategory.RECORD),
     DIG_STONE("dig.stone", "block.glass.place", SoundCategory.BLOCK),
     MOB_ENDERMEN_STARE("mob.endermen.stare", "entity.endermen.stare", SoundCategory.HOSTILE),
     GAME_PLAYER_SWIM_SPLASH("game.player.swim.splash", "entity.generic.splash", SoundCategory.BLOCK),
